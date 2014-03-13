@@ -6,7 +6,7 @@ Example Code of Manga Parser:
 
 require_once 'mangaParser.php';
 
-$html = shell_exec("casperjs mal.casper.js \"http://myanimelist.net/manga/11" 2>&1 &");
+$html = shell_exec("casperjs mal.casper.js \"http://myanimelist.net/manga/11\" 2>&1 &");
 $pareser = new MLNG\MAL\Manga\Parser($html);
 $data = $parser->getAll();
 
