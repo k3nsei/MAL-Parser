@@ -16,7 +16,7 @@ $data = $parser->getAll();
 ```php
 <?php
 
-require_once 'mangaParser.php';
+require_once 'peopleParser.php';
 $pareser = new MLNG\MAL\People\Parser($html);
 
 ?>
