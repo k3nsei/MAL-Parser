@@ -1,0 +1,14 @@
+{
+	"name": "k3nsei/MAL-Parser",
+	"description": "MyAnimeList Parsers",
+	"authors": [
+	{
+		"name": "Piotr Stępniewski",
+		"email": "k3nsei.pl@gmail.com",
+		"role": "Developer"
+	}
+	],
+	"require": {
+		"php": ">=5.4.0"
+	}
+}
