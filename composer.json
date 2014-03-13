@@ -1,5 +1,5 @@
 {
-	"name": "k3nsei/MAL-Parser",
+	"name": "MAL-Parser",
 	"description": "MyAnimeList Parsers",
 	"version": "1.0.0",
 	"type": "library",
