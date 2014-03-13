@@ -1,4 +1,4 @@
-MAL-Parser
+MyAnimeList Parsers
 ==========
 Example Code of Manga Parser:
 ```php
