@@ -18,7 +18,7 @@
     }
   ],
   "devDependencies": {
-    "phantomjs": "~1.9.7",
+    "phantomjs": "~1.9.7-1",
     "casperjs": "~1.1.0-beta3",
     "stdio": "~0.1.5"
   }
