@@ -19,7 +19,7 @@ var siteUrl = null;
 
 if (ops.url) {
 	siteUrl = ops.url;
-	var urlPattern = siteUrl.match(/http:\/\/(www\.|)myanimelist\.net\/manga\/(\d+)/);
+	var urlPattern = siteUrl.match(/http:\/\/(www\.|)myanimelist\.net\/(manga|people)\/(\d+)/);
 	if (urlPattern !== null) {
 		child = exec('casperjs mal.casper.js ' + siteUrl,
 			function (error, stdout) {
