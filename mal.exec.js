@@ -12,8 +12,7 @@ var exec = require('child_process').exec,
 	child;
 
 var ops = stdio.getopt({
-	'url': {key: 'u', args: 1, mandatory: true},
-	'ooo': {key: 'o'}
+	'url': {key: 'u', args: 1, mandatory: true}
 });
 
 var siteUrl = null;
