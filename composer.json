@@ -1,6 +1,8 @@
 {
 	"name": "k3nsei/MAL-Parser",
 	"description": "MyAnimeList Parsers",
+	"version": "1.0.0",
+	"type": "library",
 	"authors": [
 	{
 		"name": "Piotr Stępniewski",
@@ -8,6 +10,7 @@
 		"role": "Developer"
 	}
 	],
+	"license": "Apache-2.0",
 	"require": {
 		"php": ">=5.4.0"
 	}
