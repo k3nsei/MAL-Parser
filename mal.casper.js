@@ -28,7 +28,7 @@ if (casper.cli.has(0)) {
 	casper.echo("Musisz przekazac aplikacji poprawny adres url.").exit();
 }
 
-urlPattern = siteUrl.match(/http:\/\/(www\.|)myanimelist\.net\/manga\/(\d+)/);
+urlPattern = siteUrl.match(/http:\/\/(www\.|)myanimelist\.net\/(manga|people)\/(\d+)/);
 
 if (urlPattern === null) {
 	casper.echo("Przekazany adres url jest niezgodny z wzorcem.").exit();
