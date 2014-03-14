@@ -24,6 +24,7 @@ class Parser
 	private $xpath;
 
 	private $id = NULL;
+	private $slug = NULL;
 	private $title = NULL;
 	private $other_titles = array(
 		'english' => '',
@@ -55,9 +56,11 @@ class Parser
 				}
 			} else {
 				throw new Exception('MangaParser Error 1: Received data isn\'t HTML Document or Class can\'t parse it.');
+
 			}
 		} else {
 			throw new Exception('MangaParser Error 0: Class have not received the html document.');
+			return;
 		}
 	}
 
@@ -86,6 +89,33 @@ class Parser
 		return $this->id;
 	}
 
+	/**
+	 * Set $slug
+	 */
+	private function setSlug()
+	{
+		$x = $this->xpath->query('//*[@id="horiznav_nav"]/ul/li/a/@href');
+		if ($x->length > 0) {
+			if (filter_var($x->item(0)->nodeValue, FILTER_VALIDATE_URL, FILTER_FLAG_PATH_REQUIRED)) {
+				$match = FALSE;
+				if (preg_match('/myanimelist\.net\/manga\/(\d+)\/(.*)/', $x->item(0)->nodeValue, $match)) {
+					$this->slug = str_replace(
+						'/',
+						'',
+						$match[2]
+					);
+				}
+			}
+		}
+	}
+
+	/**
+	 * @return $slug
+	 */
+	public function getSlug()
+	{
+		return $this->slug;
+	}
 
 	/**
 	 * Set $title
@@ -457,27 +487,34 @@ class Parser
 	private function setAll()
 	{
 		$this->setId();
-		$this->setTitle();
-		$this->setOtherTitles();
-		$this->setType();
-		$this->setAuthors();
-		$this->setGenres();
-		$this->setStatus();
-		$this->setStartDate();
-		$this->setEndDate();
-		$this->setSynopsis();
-		$this->setVolumes();
-		$this->setChapters();
-		$this->setRank();
-		$this->setPopularityRank();
-		$this->setScore();
-		$this->setImageUrl();
+		if($this->getId() !== NULL) {
+			$this->setSlug();
+			$this->setTitle();
+			$this->setOtherTitles();
+			$this->setType();
+			$this->setAuthors();
+			$this->setGenres();
+			$this->setStatus();
+			$this->setStartDate();
+			$this->setEndDate();
+			$this->setSynopsis();
+			$this->setVolumes();
+			$this->setChapters();
+			$this->setRank();
+			$this->setPopularityRank();
+			$this->setScore();
+			$this->setImageUrl();
+		} else {
+			throw new Exception('No manga found.');
+			return;
+		}
 	}
 
 	public function getAll()
 	{
 		return array(
 			'id' => $this->getId(),
+			'slug' => $this->getSlug(),
 			'title' => $this->getTitle(),
 			'other_titles' => $this->getOtherTitles(),
 			'type' => $this->getType(),
@@ -493,8 +530,8 @@ class Parser
 			'popularity_rank' => $this->getPopularityRank(),
 			'score' => $this->getScore(),
 			'image_url' => $this->getImageUrl(),
-			'related_manga' => array(),
-			'alternative_versions' => array()
+			//'related_manga' => array(),
+			//'alternative_versions' => array()
 		);
 	}
 
