@@ -6,6 +6,18 @@ use DOMDocument;
 use DOMXPath;
 use Exception;
 
+/*!
+ * MyAnimeList People Parser Class
+ *
+ * Version: 1.0.5
+ * Usage:
+ *        $pareser = new MLNG\MAL\People\Parser($html);
+ *        $data = $parser->getAll();
+ *
+ * Copyright (c) 2014 k3nsei.pl@gmail.com
+ *
+ */
+
 class Parser
 {
 
