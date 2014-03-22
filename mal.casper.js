@@ -1,7 +1,7 @@
 /*!
  * MyAnimeList Data Collector application based at CasperJS.
  *
- * Version: 1.0.0
+ * Version: 1.0.5
  * Usage: casperjs mal.casper.js "http://myanimelist.net/manga/{id}"
  *
  * Copyright (c) 2014 k3nsei.pl@gmail.com
@@ -11,8 +11,8 @@ var casper = require("casper").create({
 	//verbose: true,
 	//logLevel: "debug",
 	viewportSize: {
-		width: 1920,
-		height: 1080
+		width: 400,
+		height: 300
 	},
 	pageSettings: {
 		userAgent: "Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/30.0.1599.101 Safari/537.36"
@@ -33,7 +33,7 @@ urlPattern = siteUrl.match(/http:\/\/(www\.|)myanimelist\.net\/(manga|people)\/(
 if (urlPattern === null) {
 	casper.echo("Przekazany adres url jest niezgodny z wzorcem.").exit();
 } else {
-	siteUrl = "http://myanimelist.net/manga/" + urlPattern[2];
+	siteUrl = "http://myanimelist.net/" + urlPattern[2] + "/" + urlPattern[3];
 	casper
 		.start()
 		.open(siteUrl)
