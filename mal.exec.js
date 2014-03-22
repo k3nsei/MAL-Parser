@@ -1,7 +1,7 @@
 /*!
  * MyAnimeList Data Collector application based at CasperJS.
  *
- * Version: 1.0.0
+ * Version: 1.0.5
  * Usage: node mal.exec.js --url "http://myanimelist.net/manga/{id}"
  *
  * Copyright (c) 2014 k3nsei.pl@gmail.com
@@ -12,7 +12,8 @@ var exec = require('child_process').exec,
 	child;
 
 var ops = stdio.getopt({
-	'url': {key: 'u', args: 1, mandatory: true}
+	'url': {key: 'u', args: 1, mandatory: true},
+	'ooo': {key: 'o'}
 });
 
 var siteUrl = null;
